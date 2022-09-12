@@ -4,8 +4,7 @@ body {
 
 .container {
     min-height: 100vh;
-    background-image: radial-gradient(#1634FE 35%, black 60%);
-    /* background-image: linear-gradient(90deg, #212620, #AC9A82); */
+    background-image: radial-gradient(#1635fe9a 55%, black 70%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,33 +23,37 @@ body {
     width: 30rem;
 }
 
-.quiz-answer-card:hover {
-    cursor: pointer;
-    background-color: whitesmoke;
-}
-
 .bg-success, .bg-danger {
     color: white;
 }
+
 .bg-success-text {
-    color: #198754 !important;;
+    color: #198754 !important;
+    ;
 }
+
 .bg-danger-text {
-    color:red;
+    color: red;
 }
+
 .d-none {
     display: none;
 }
+
 .width-100 {
     width: 100%;
 }
+
 .text-center {
-    text-align: center !important;   
+    text-align: center !important;
 }
+
 .card-body-to-hover:hover {
-background-color: black !important;
-color: white;
+    background-color: black !important;
+    color: white;
+    cursor: pointer;
 }
+
 .explanation-text {
     display: flex;
     justify-content: space-between;
@@ -58,9 +61,15 @@ color: white;
     align-items: center;
     font-size: 1.25rem !important;
 }
+
 .font-size {
     font-size: 1.5rem !important;
 }
+
 .card-body-border {
     border-top: 1px black solid;
+}
+
+.pointer-none {
+    pointer-events: none !important;
 }

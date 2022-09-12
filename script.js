@@ -91,7 +91,6 @@ let questions = [
     },
 ]
 
-
 let currentQuestion = 0;
 let numberOfQuestion = 1;
 let numberOfRightQuestions = 0;
@@ -125,8 +124,7 @@ function answer(selection) {
     let idOfRightAnswer = `answer_${question['right_answer']}`;
     if (selectedQuestionNumber == question['right_answer']) {
         document.getElementById('check-answer').innerHTML = `<b class="bg-success-text">Richtig!</b>`;
-        document.getElementById(selection).parentNode.classList.add('bg-success');
-        document.getElementById(selection).parentNode.classList.remove('card-body-to-hover'); // parentNode = übergeordnetes Element
+        document.getElementById(selection).parentNode.classList.add('bg-success'); // parentNode = übergeordnetes Element
         AUDIO_SUCCESS.play();
         numberOfRightQuestions++;
     } else {
@@ -135,12 +133,24 @@ function answer(selection) {
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         document.getElementById('explanation').style = '';
         document.getElementById('explanation-text').innerHTML = `${question['right_answer_text']}`;
-        document.getElementById(selection).parentNode.classList.remove('card-body-to-hover');
         AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
+    disableAnswerClick();
 }
 
+function enableAnswerClick() {
+    document.getElementById('answer_1').parentNode.classList.remove('pointer-none');
+    document.getElementById('answer_2').parentNode.classList.remove('pointer-none');
+    document.getElementById('answer_3').parentNode.classList.remove('pointer-none');
+    document.getElementById('answer_4').parentNode.classList.remove('pointer-none');
+}
+function disableAnswerClick() {
+    document.getElementById('answer_1').parentNode.classList.add('pointer-none');
+    document.getElementById('answer_2').parentNode.classList.add('pointer-none');
+    document.getElementById('answer_3').parentNode.classList.add('pointer-none');
+    document.getElementById('answer_4').parentNode.classList.add('pointer-none');
+}
 
 function showEndScreenText() {
     document.getElementById('endScreen').style = '';
@@ -170,6 +180,7 @@ function showNextQuestion() {
 }
 
 function nextQuestion(selection) {
+    enableAnswerClick();
     currentQuestion++; //z.B. von 0 auf 1
     numberOfQuestion++;
     document.getElementById('check-answer').innerHTML = '';

@@ -125,12 +125,14 @@ function answer(selection) {
     if (selectedQuestionNumber == question['right_answer']) {
         document.getElementById('check-answer').innerHTML = `<b class="bg-success-text">Richtig!</b>`;
         document.getElementById(selection).parentNode.classList.add('bg-success'); // parentNode = übergeordnetes Element
+        document.getElementById(selection).parentNode.classList.remove('card-body-to-hover'); // parentNode = übergeordnetes Element
         AUDIO_SUCCESS.play();
         numberOfRightQuestions++;
     } else {
         document.getElementById('check-answer').innerHTML = `<b class="bg-danger-text">Falsch!</b>`;
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        document.getElementById(selection).parentNode.classList.remove('card-body-to-hover'); // parentNode = übergeordnetes Element
         document.getElementById('explanation').style = '';
         document.getElementById('explanation-text').innerHTML = `${question['right_answer_text']}`;
         AUDIO_FAIL.play();
@@ -150,6 +152,12 @@ function disableAnswerClick() {
     document.getElementById('answer_2').parentNode.classList.add('pointer-none');
     document.getElementById('answer_3').parentNode.classList.add('pointer-none');
     document.getElementById('answer_4').parentNode.classList.add('pointer-none');
+}
+function addHoverEffectOnAnswer() {
+    document.getElementById('answer_1').parentNode.classList.add('card-body-to-hover');
+    document.getElementById('answer_2').parentNode.classList.add('card-body-to-hover');
+    document.getElementById('answer_3').parentNode.classList.add('card-body-to-hover');
+    document.getElementById('answer_4').parentNode.classList.add('card-body-to-hover');
 }
 
 function showEndScreenText() {
@@ -187,6 +195,7 @@ function nextQuestion(selection) {
     document.getElementById('number-of-question').innerHTML = numberOfQuestion;
     document.getElementById('next-button').disabled = true;
     document.getElementById('explanation').style = 'display: none';
+    addHoverEffectOnAnswer();
     resetAnswerButtons();
     showQuestion();
 }
